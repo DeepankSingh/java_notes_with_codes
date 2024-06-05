@@ -22,7 +22,7 @@ class ExampleStatic {
 
 public class StaticMethod { 
     public static void main(String[] args) {
-        // Calling the static method directly using the class name
+        // Calling the static method directly using the class name. So basically there is no need to create an object for the methon statMethod because it is declared statically.
         ExampleStatic.statMethod();
 
         // Creating an object to set and get the roll number
