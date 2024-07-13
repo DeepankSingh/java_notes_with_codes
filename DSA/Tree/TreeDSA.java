@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class TreeDSA {
 
     static class Node {
@@ -58,6 +61,33 @@ public class TreeDSA {
             postorder(root.right);
             System.out.print(root.data + " ");
         }
+
+        // Level Order Traversal using a Queue
+        public static void levelorder(Node root) {
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
+                    System.out.println();
+                    if (q.isEmpty()) {
+                        break;
+                    } else {
+                        q.add(null);
+                    }
+                } else {
+                    System.out.print(currNode.data + " ");
+                    if (currNode.left != null) {
+                        q.add(currNode.left);
+                    }
+                    if (currNode.right != null) {
+                        q.add(currNode.right);
+                    }
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -76,6 +106,10 @@ public class TreeDSA {
 
         System.out.println("PostOrder Traversal:");
         tree.postorder(root);
+        System.out.println();
+
+        System.out.println("LevelOrder Traversal:");
+        tree.levelorder(root);
         System.out.println();
     }
 }
